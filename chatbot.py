@@ -7,7 +7,49 @@ def get_response(message, user_name, last_topic):
 
     elif message in ["hello", "hi", "hey"]:
         return "Hello! How are you today?", user_name, "feeling"
+    if last_topic == "feeling":
+        if message in ["good", "great", "fine", "i am good", "i am fine"]:
+            return "That is great! What is your name?", user_name, "name"
 
+        elif message in ["bad", "sad", "not good", "i am sad"]:
+            return (
+                "I am sorry to hear that. Would you like to hear a joke?",
+                user_name,
+                "joke_offer"
+            )
+    if last_topic == "name":
+        if message.startswith("my name is "):
+            user_name = message.replace("my name is ", "").title()
+
+            return (
+                f"Nice to meet you, {user_name}! What would you like to ask?",
+                user_name,
+                "general"
+            )
+
+        return (
+            "Please write your name like this: my name is Abdullah",
+            user_name,
+            "name"
+        )
+    if message.startswith("my name is "):
+        user_name = message.replace("my name is ", "").title()
+
+        return (
+            f"Nice to meet you, {user_name}! How can I help you?",
+            user_name,
+            "general"
+        )
+
+    elif message in ["what is my name", "do you know my name"]:
+        if user_name:
+            return f"Your name is {user_name}.", user_name, "general"
+
+        return (
+            "You have not told me your name yet. What is your name?",
+            user_name,
+            "name"
+        )
     elif message in ["what is your name", "who are you"]:
         return (
             "My name is PyBot. I am a simple rule-based chatbot.",
@@ -54,6 +96,7 @@ def start_chatbot():
 
         if last_topic == "exit":
             break
+
 
 
 start_chatbot()
