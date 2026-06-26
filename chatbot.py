@@ -178,7 +178,30 @@ def get_response(message, user_name, last_topic):
             user_name,
             "general"
         )
+    elif message in ["thank you", "thanks"]:
+        return (
+            "You are welcome! Is there anything else I can help with?",
+            user_name,
+            "more_help"
+        )
 
+    elif last_topic == "more_help":
+        if message in ["yes", "yeah", "sure"]:
+            return (
+                "Great! Ask me another question.",
+                user_name,
+                "general"
+            )
+
+        elif message in ["no", "nope"]:
+            return (
+                "Okay. Type 'bye' whenever you want to leave.",
+                user_name,
+                "general"
+            )
+
+    elif message == "":
+        return "Please enter a message.", user_name, last_topic
     return (
         "Sorry, I do not understand that. "
         "Type 'help' to see what I can answer.",
