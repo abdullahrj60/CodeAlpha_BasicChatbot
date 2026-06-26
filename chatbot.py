@@ -221,19 +221,23 @@ def start_chatbot():
     print("PyBot: Type 'bye' to end the chat.\n")
 
     while True:
-        user_message = input("You: ")
+        try:
+            user_message = input("You: ")
 
-        response, user_name, last_topic = get_response(
-            user_message,
-            user_name,
-            last_topic
-        )
+            response, user_name, last_topic = get_response(
+                user_message,
+                user_name,
+                last_topic
+            )
 
-        print("PyBot:", response)
+            print("PyBot:", response)
 
-        if last_topic == "exit":
+            if last_topic == "exit":
+                break
+
+        except KeyboardInterrupt:
+            print("\nPyBot: Chat stopped safely. Goodbye!")
             break
-
 
 
 start_chatbot()
