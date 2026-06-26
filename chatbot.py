@@ -67,6 +67,29 @@ def get_response(message, user_name, last_topic):
                 user_name,
                 "general"
             )
+    if last_topic == "python_followup":
+        if message in ["yes", "yeah", "sure", "ok", "okay"]:
+            return (
+                "Python is used in AI, web development, automation, "
+                "data science and cybersecurity.",
+                user_name,
+                "general"
+            )
+
+        elif message in ["no", "nope"]:
+            return "No problem. Ask me something else.", user_name, "general"
+
+    if last_topic == "ai_followup":
+        if message in ["yes", "yeah", "sure", "ok", "okay"]:
+            return (
+                "Examples of AI include chatbots, recommendation systems "
+                "and image recognition.",
+                user_name,
+                "general"
+            )
+
+        elif message in ["no", "nope"]:
+            return "No problem. Ask me something else.", user_name, "general"
     if message.startswith("my name is "):
         user_name = message.replace("my name is ", "").title()
 
@@ -99,7 +122,22 @@ def get_response(message, user_name, last_topic):
             user_name,
             "general"
         )
+    
+    elif message == "what is python":
+        return (
+            "Python is a simple and popular programming language. "
+            "Would you like to know where it is used?",
+            user_name,
+            "python_followup"
+        )
 
+    elif message in ["what is ai", "what is artificial intelligence"]:
+        return (
+            "AI allows computers to perform tasks that usually require "
+            "human intelligence. Would you like an example?",
+            user_name,
+            "ai_followup"
+        )
     return (
         "Sorry, I do not understand that. "
         "Type 'help' to see what I can answer.",
