@@ -178,6 +178,7 @@ def get_response(message, user_name, last_topic):
             user_name,
             "general"
         )
+
     return (
         "Sorry, I do not understand that. "
         "Type 'help' to see what I can answer.",
