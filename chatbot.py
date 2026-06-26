@@ -140,6 +140,44 @@ def get_response(message, user_name, last_topic):
             user_name,
             "ai_followup"
         )
+    elif message in ["what is cybersecurity", "what is cyber security"]:
+        return (
+            "Cybersecurity protects computers, networks and data from attacks.",
+            user_name,
+            "general"
+        )
+
+    elif message in ["what is codealpha", "tell me about codealpha"]:
+        return (
+            "CodeAlpha provides internships and practical projects for students.",
+            user_name,
+            "general"
+        )
+
+    elif message in ["what time is it", "time"]:
+        current_time = datetime.now().strftime("%I:%M %p")
+
+        return (
+            "The current time is " + current_time,
+            user_name,
+            "general"
+        )
+
+    elif message in ["what is the date", "date"]:
+        current_date = datetime.now().strftime("%d %B %Y")
+
+        return (
+            "Today's date is " + current_date,
+            user_name,
+            "general"
+        )
+
+    elif message in ["tell me a joke", "joke"]:
+        return (
+            "Why do programmers prefer dark mode? Because light attracts bugs!",
+            user_name,
+            "general"
+        )
     return (
         "Sorry, I do not understand that. "
         "Type 'help' to see what I can answer.",
