@@ -32,6 +32,40 @@ def get_response(message, user_name, last_topic):
             user_name,
             "name"
         )
+    if last_topic == "joke_offer":
+        if message in ["yes", "yeah", "sure", "ok", "okay"]:
+            jokes = [
+                "Why do programmers prefer dark mode? Because light attracts bugs!",
+                "Why was the computer cold? Because it left its Windows open!"
+            ]
+
+            return (
+                random.choice(jokes) + " Do you feel better now?",
+                user_name,
+                "after_joke"
+            )
+
+        elif message in ["no", "nope"]:
+            return (
+                "No problem. You can ask me something else.",
+                user_name,
+                "general"
+            )
+
+    if last_topic == "after_joke":
+        if message in ["yes", "better", "a little"]:
+            return (
+                "I am glad to hear that! What would you like to ask next?",
+                user_name,
+                "general"
+            )
+
+        elif message in ["no", "not really"]:
+            return (
+                "I understand. I hope you feel better soon.",
+                user_name,
+                "general"
+            )
     if message.startswith("my name is "):
         user_name = message.replace("my name is ", "").title()
 
