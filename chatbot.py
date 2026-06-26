@@ -1,4 +1,5 @@
 # basic chatbot
+import random
 def get_response(message, user_name, last_topic):
     message = message.lower().strip()
 
